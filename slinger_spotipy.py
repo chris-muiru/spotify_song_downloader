@@ -14,6 +14,8 @@ from pytube import YouTube
 from spotipy.oauth2 import SpotifyClientCredentials
 from youtubesearchpython import VideosSearch
 
+from type_of_song import resolve_type_of_song
+
 cid = os.getenv('SPOTIFY_API_ID')
 secret = os.getenv('SPOTIFY_API_KEY')
 
@@ -22,22 +24,38 @@ client_credentials_manager = SpotifyClientCredentials(
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 
-playlist_url = input('Enter url of playlist or album: ')
-album_playlist_bool = input('Album or playlist?(y-album n-playlist)')
-song_folder = input('enter folder name: ')
-MUSIC_DIR = '/home/kris/Music/'
+song_url = input('Enter url of playlist or album: ')
 
-if os.path.exists(MUSIC_DIR+song_folder):
-    pass
-else:
-    os.mkdir(MUSIC_DIR+song_folder)
+type_of_music = resolve_type_of_song(song_url)
 
-os.chdir(MUSIC_DIR+song_folder)
+print(f'Type of media --> {type_of_music}')
+
+
+def mkdir_and_chdir_to_download(type_of_music):
+    """
+    create a directory to download music in based on the type of music.
+    After creating the directory,change to that directory
+
+    Args:
+        type_of_music (string): type of music media e.g show,playlist....
+    """
+    MUSIC_DIR = '/home/kris/Music/'
+
+    song_folder = input('enter folder name: ')
+
+    download_to_folder = f'{MUSIC_DIR}/{type_of_music}s/{song_folder}'
+
+    x = os.makedirs(download_to_folder) if not os.path.exists(
+        download_to_folder) else None
+
+    os.chdir(download_to_folder)
+
+# call function to create and change to this dir
+
+mkdir_and_chdir_to_download(type_of_music)
 
 
 # handle albums
-
-
 tracks = []
 
 
@@ -52,10 +70,9 @@ def get_album_tracks(album_id):
         tracks.append(track)
     return tracks
 
+
 # handle playlists
-
-
-def getTrackIDs(user, playlist_id):
+def get_playlist_ids(user, playlist_id):
     ids = []
     playlist = sp.user_playlist(user, playlist_id)
     for item in playlist['tracks']['items']:
@@ -65,7 +82,7 @@ def getTrackIDs(user, playlist_id):
 
 
 if album_playlist_bool == 'y':
-    tracks = get_album_tracks(playlist_url)
+    tracks = get_album_tracks(song_url)
     for song in tracks:
         search_song = VideosSearch(song, limit=1)
         result = search_song.result()
