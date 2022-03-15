@@ -55,6 +55,7 @@ def mkdir_and_chdir_to_download(type_of_music):
 
 # call function to create and change to specified directory dir
 
+
 mkdir_and_chdir_to_download(type_of_music)
 
 
@@ -112,6 +113,7 @@ def downloadTracks(tracks):
         stream = song.streams.filter(only_audio=True)
         stream.first().download()  # dowload audio
         print('--------------------------------------------------------')
+
 
 def downloadTracksBasedOnMediaType(type_of_music):
     """
