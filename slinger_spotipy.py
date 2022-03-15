@@ -52,22 +52,35 @@ def mkdir_and_chdir_to_download(type_of_music):
 
 # call function to create and change to this dir
 
+
 mkdir_and_chdir_to_download(type_of_music)
 
 
-# handle albums
-tracks = []
+def getPlaylist(link):
+    """ get a list of playlist music
+
+    Args:
+        link (string): spotify playlist link
+    """
+    tracks = []
+    playlist = sp.playlist_items(link)
+    df = pd.DataFrame(playlist)
+    for i in df.index:
+        items = df.loc[i, 'items']
+        altist = items['track']['album']['artists'][0]['name']
+        song = items['track']['album']['name']
+        tracks.append(f'{altist} {song}')
 
 
-def get_album_tracks(album_id):
-    album = sp.album_tracks(album_id)
+def getAlbum(link):
+    tracks = []
+    album = sp.album_tracks(link)
     data_flame = pd.DataFrame(album)
     for i in range(len(data_flame)):
         items = data_flame.loc[i]['items']
-        name = items['artists'][0]['name']
+        altist = items['artists'][0]['name']
         song = items['name']
-        track = name+' '+song
-        tracks.append(track)
+        tracks.append(f'{altist} {song}')
     return tracks
 
 
