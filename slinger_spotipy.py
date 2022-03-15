@@ -97,6 +97,13 @@ def getAlbumTracks(link):
 
 
 def downloadTracks(tracks):
+    """
+    download the music in tracks parameter
+
+    Args:
+        tracks (list): tracks to download from getTrack functions specified
+
+    """
     for track in tracks:
         match_song = str(VideosSearch(track, limit=1).result()
                          )  # search for song and return match
@@ -107,6 +114,12 @@ def downloadTracks(tracks):
         print('--------------------------------------------------------')
 
 def downloadTracksBasedOnMediaType(type_of_music):
+    """
+    checks the type of song and invoke the downloadTracks based on song type
+
+    Args:
+        type_of_music (str): the type of song
+    """
     if type_of_music == 'playlist':
         playlist_tracks = getPlaylistTracks(song_url)
         downloadTracks(playlist_tracks)
