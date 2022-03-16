@@ -4,11 +4,8 @@
 
 # title: slinger_spotify music downloader
 
-
 import os
 import spotipy
-import sys
-import json
 import pandas as pd
 from pytube import YouTube
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -97,6 +94,16 @@ def getAlbumTracks(link):
     return tracks
 
 
+def downloadVideoOrAudio(song, choice):
+    print(f'downloading {song.title}')
+    if choice == 'audio':
+        stream = song.streams.filter(only_audio=True).first(
+        ).download()  # dowload first audio file
+    elif choice == 'video':
+        stream = song.streams.filter(
+            progressive=True).first().download()
+
+
 def downloadTracks(tracks):
     """
     download the music in tracks parameter
@@ -105,13 +112,15 @@ def downloadTracks(tracks):
         tracks (list): tracks to download from getTrack functions specified
 
     """
+    choice = input('audio or video?: ')
+    print('--------------------------------------------------------')
     for track in tracks:
         match_song = str(VideosSearch(track, limit=1).result()
                          )  # search for song and return match
+
         song = YouTube(str(match_song))
-        print(f'downloading {song.title}')
-        stream = song.streams.filter(only_audio=True)
-        stream.first().download()  # dowload audio
+
+        downloadVideoOrAudio(song, choice)
         print('--------------------------------------------------------')
 
 
