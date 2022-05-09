@@ -8,7 +8,7 @@ music or 720p videos if the music exists.
 - run `pip3 install -r requiremnts.txt` to install the requirements.
 - head to spotify for developer(https://developer.spotify.com/documentation/web-api/) and create an account.
 - create an app inside `spotify for developer` which will give you a secret id and key.
-- if running linux,in your `.bashrc` or `.zshrc`,create the two shell variables 'SPOTIFY_API_KEY' and `SPOTIFY_API_ID`.
+- if running linux,in your `.bashrc` or `.zshrc`,create the two shell variables `SPOTIFY_API_KEY` and `SPOTIFY_API_ID`.
 ```
 e.g
 export SPOTIFY_API_KEY = 'c23........'
