@@ -15,6 +15,11 @@ export SPOTIFY_API_KEY = 'c23........'
 export SPOTIFY_API_ID ='vt5......'
 ```
 - you can also replace the two lines `cid and secret` with the key and id in `slinger_spotify.py`.
+```
+# slinger_spotify.py
+cid = 'ghq.....'
+secret = 'cf5.....'
+```
 - run the `slinger_spotify` file,
 ```
 python slinger_spotify.py
