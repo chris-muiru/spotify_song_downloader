@@ -101,7 +101,7 @@ def downloadVideoOrAudio(song, choice):
         ).download()  # dowload first audio file
     elif choice == 'video':
         stream = song.streams.filter(
-            progressive=True).first().download()
+            progressive=True, file_extension="mp4", res="720p").first().download()
 
 
 def downloadTracks(tracks):
