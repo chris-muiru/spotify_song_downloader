@@ -14,14 +14,16 @@ pip install -r requirements.txt
 If using python3,use pip3.
 
 Head over to [spotify for developer](https://developer.spotify.com/documentation/web-api/) and create an account.Create an app inside `spotify for developer` which will give you a secret id and key(check out their docs for more info).
-If running linux,in your `.bashrc` or `.zshrc`,create two shell variables `SPOTIFY_API_KEY` and `SPOTIFY_API_ID`.
+
+If using linux,in your `.bashrc` or `.zshrc`,create two shell variables `SPOTIFY_API_KEY` and `SPOTIFY_API_ID`.
 
 ```bash
 export SPOTIFY_API_KEY = 'c23........'
 export SPOTIFY_API_ID ='vt5......'
 ```
 
-You can also replace the two lines `cid and secret` with the spotify api key and id in `slinger_spotify.py`.
+If not using linux,replace the two lines `cid and secret` with the spotify api key and id in `slinger_spotify.py`.
+
 ```python
 # slinger_spotify.py
 cid = 'ghq.....'
