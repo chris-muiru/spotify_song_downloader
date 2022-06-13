@@ -29,6 +29,8 @@ If not using linux,replace the two lines `cid and secret` with the spotify api k
 cid = 'ghq.....'
 secret = 'cf5.....'
 ```
+This api keys and id were created in  [spotify for developer](https://developer.spotify.com/documentation/web-api/) above.
+
 Run the `slinger_spotify` file,
 ```
 python slinger_spotify.py
