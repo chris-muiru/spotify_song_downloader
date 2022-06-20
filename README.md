@@ -41,6 +41,7 @@ and follow the steps
 - [pandas](https://pandas.pydata.org/)
 
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)
+- [spotipy](https://spotipy.readthedocs.io/en/master/)
 ## Licence 
 - [MIT](https://choosealicense.com/licenses/mit/)
 
