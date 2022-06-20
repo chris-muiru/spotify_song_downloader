@@ -1,6 +1,5 @@
 # spotify_song_dowloader
-A spotify music downloader that downloads playlists,albums or single music/video. A user provides the spotify music link to download the video(s) or audio(s).Follow the installation
-
+A spotify music downloader that downloads playlists,albums or single music/video using spotify music link
 
 # Installation
 Clone repo on your machine.
