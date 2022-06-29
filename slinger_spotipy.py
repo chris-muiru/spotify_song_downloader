@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# author kris muiru
+# author Chris muiru
 
 # title: slinger_spotify music downloader
 
@@ -38,14 +38,14 @@ def mkdir_and_chdir_to_download(type_of_music):
     Args:
         type_of_music (string): type of music media e.g show,playlist....
     """
-    MUSIC_DIR = '/home/kris/Music/'
+    MUSIC_DIR = os.getcwd()
 
     song_folder = input('enter folder name: ')
 
-    download_to_folder = f'{MUSIC_DIR}/{type_of_music}s/{song_folder}'
-
-    x = os.makedirs(download_to_folder) if not os.path.exists(
-        download_to_folder) else None
+    download_to_folder = os.path.join(
+        MUSIC_DIR, f'{type_of_music}s', song_folder)
+    if not os.path.exists(download_to_folder):
+        os.makedirs(download_to_folder)
 
     os.chdir(download_to_folder)
     print('--------------------------------------------------------')
