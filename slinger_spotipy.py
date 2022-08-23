@@ -2,7 +2,7 @@
 
 # author Chris muiru
 
-# title: slinger_spotify music downloader
+# title: _spotify music downloader
 
 import os
 import spotipy
@@ -13,9 +13,10 @@ from youtubesearchpython import VideosSearch
 
 from type_of_song import resolve_type_of_song
 
-cid = os.getenv('SPOTIFY_API_ID')
-secret = os.getenv('SPOTIFY_API_KEY')
+cid = os.getenv('SpotifyId')
+secret = os.getenv('SpotifySecret')
 
+# authenticate using credentials provided
 client_credentials_manager = SpotifyClientCredentials(
     client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
@@ -38,12 +39,11 @@ def mkdir_and_chdir_to_download(type_of_music):
     Args:
         type_of_music (string): type of music media e.g show,playlist....
     """
-    MUSIC_DIR = os.getcwd()
-
+    MUSIC_DIR = os.path.expanduser("~") # get home directory path
     song_folder = input('enter folder name: ')
 
     download_to_folder = os.path.join(
-        MUSIC_DIR, f'{type_of_music}s', song_folder)
+        MUSIC_DIR,'Music', f'{type_of_music}s', song_folder)
     if not os.path.exists(download_to_folder):
         os.makedirs(download_to_folder)
 
@@ -51,8 +51,6 @@ def mkdir_and_chdir_to_download(type_of_music):
     print('--------------------------------------------------------')
 
 # call function to create and change to specified directory dir
-
-
 mkdir_and_chdir_to_download(type_of_music)
 
 
@@ -119,6 +117,7 @@ def downloadTracks(tracks):
                          )  # search for song and return match
 
         song = YouTube(str(match_song))
+
 
         downloadVideoOrAudio(song, choice)
         print('--------------------------------------------------------')
