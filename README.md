@@ -1,4 +1,5 @@
 # spotify_song_dowloader
+
 A spotify music downloader that downloads playlists,albums or single music/video using spotify music link
 
 # Installation
@@ -41,6 +42,6 @@ and follow the steps
 
 - [youtube-search-python](https://pypi.org/project/youtube-search-python/)
 - [spotipy](https://spotipy.readthedocs.io/en/master/)
-## Licence 
+## License 
 - [MIT](https://choosealicense.com/licenses/mit/)
 
