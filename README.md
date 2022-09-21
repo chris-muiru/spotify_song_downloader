@@ -22,7 +22,7 @@ export SPOTIFY_API_KEY = 'c23........'
 export SPOTIFY_API_ID ='vt5......'
 ```
 
-If not using linux,replace the two lines `cid and secret` with the spotify api key and id in `slinger_spotify.py`.
+If not using linux or not feeling like creationg shell variables,replace the two lines `cid and secret` with the spotify api key and id in `slinger_spotify.py`.
 
 ```python
 # slinger_spotify.py
